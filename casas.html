@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casas Disponíveis - AlugaAqui</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #0a7cff;
+      color: white;
+      padding: 25px;
+      text-align: center;
+    }
+
+    header img {
+      height: 180px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #0a7cff;
+    }
+
+    .anuncios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .anuncio {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+    }
+
+    .anuncio img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #0a7cff;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0a7cff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" alt="AlugaAqui" style="height:180px; display:block; margin:auto;">
+  <p>Seu lar, direto do proprietario: seguro, transparente e confiável</p>
+</header>
+
+<section>
+  <h2>Casas Temporariamente Disponíveis</h2>
+  <section style="background:#fff3cd; border:1px solid #ffeeba; padding:20px; border-radius:8px; margin:20px auto; max-width:1100px;">
+  <h3 style="color:#856404;">⚠️ Aviso Importante</h3>
+  <p>
+    O AlugaAqui encontra-se actualmente numa <strong>fase experimental</strong>.
+    As casas apresentadas nesta versão são <strong>fictícias</strong> e servem apenas
+    para demonstrar o funcionamento da plataforma.
+  </p>
+  <p>
+    <strong>És proprietário e queres anunciar a tua casa?</strong><br>
+    Envia as fotos e os dados pelo WhatsApp e ajuda-nos a construir uma plataforma
+    de arrendamento mais transparente em Moçambique.
+    O mesmo serve para <b>SUGESTOES PARA MELHORAR O NOSSO APLICATIVO</b>
+  </p>
+  <a href="https://wa.me/258840000000?text=Olá,+sou+proprietário+e+quero+anunciar+uma+casa+no+AlugaAqui"
+     class="btn">
+     Enviar pelo WhatsApp
+  </a>
+</section>
+
+  <div class="anuncios" id="listaAnuncios"></div>
+</section>
+
+<a href="index.html.html" class="btn" style="display:block; text-align:center;">Voltar à Página Inicial</a>
+
+<footer>
+  <p>Criado por: Sergio Ferdinanda</p>
+  <p>Contacto: +258 85 732 0579</p>
+  <p>&copy; 2026 AlugaAqui</p>
+</footer>
+
+<script>
+// Lista de anúncios com imagens, contacto, preço e localização
+let anuncios = [
+  { 
+    proprietario: "Sr. Delio Nhantumbo",
+    tipo: "Quarto",
+    local: "Maputo",
+    preco: 3000,
+    contacto: "840000000",
+    imagens: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688"
+    ]
+  },
+  { 
+    proprietario: "Dona Ferdinanda",
+    tipo: "Casa T2",
+    local: "inhambane",
+    preco: 8500,
+    contacto: "870000000",
+    imagens: [
+      "https://images.unsplash.com/photo-1572120360610-d971b9b78825",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    ]
+  },
+  { 
+    proprietario: "Sr. Carmon da nanda",
+    tipo: "Apartamento",
+    local: "",
+    preco: 15000,
+    contacto: "860000000",
+    imagens: [
+      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c"
+    ]
+  }
+];
+
+// Função para criar os anúncios no HTML
+function renderAnuncios() {
+  const div = document.getElementById("listaAnuncios");
+  div.innerHTML = ""; // limpa a lista
+  anuncios.forEach(a => {
+    // Cada imagem recebe onclick para abrir modal
+    let fotos = a.imagens.map(img => 
+      `<img src='${img}' alt='Casa para alugar' onclick='abrirModal(this.src)'>`
+    ).join('');
+    
+    div.innerHTML += `
+      <div class='anuncio'>
+        ${fotos}
+        <span class='badge'>${a.tipo}</span>
+        <p><strong>Proprietário:</strong> ${a.proprietario}</p>
+        <p><strong>Localização:</strong> ${a.local}</p>
+        <p><strong>Preço:</strong> ${a.preco} MZN</p>
+        <p><strong>Contacto:</strong> ${a.contacto}</p>
+        <a class='btn' href='https://wa.me/258${a.contacto}' target='_blank'>Falar com o proprietário</a>
+      </div>`;
+  });
+}
+
+// Funções para abrir e fechar o modal
+function abrirModal(src) {
+  document.getElementById('imgModal').src = src;
+  document.getElementById('modalImagem').style.display = 'block';
+}
+
+function fecharModal() {
+  document.getElementById('modalImagem').style.display = 'none';
+}
+
+// Chama a função para renderizar os anúncios na página
+renderAnuncios();
+</script>
+
+<div id="modalImagem" style="display: none; position: fixed; z-index: 1000; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8);">
+    <span onclick="fecharModal()" style="position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+    <img id="imgModal" style="margin: auto; display: block; max-width: 90%; max-height: 80%; border-radius: 10px;" src="">
+</div>
+
+</body>
+</html>
