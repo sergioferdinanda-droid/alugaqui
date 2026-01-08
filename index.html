@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma segura para aluguel de imóveis em Moçambique. Conecte proprietários e inquilinos diretamente.">
+  <meta name="keywords" content="aluguel, imóveis, Moçambique, casas, arrendamento, Maputo">
   <title>AlugaAqui — Arrendamento sem boatos</title>
 
   <style>
@@ -38,14 +39,12 @@
   cursor: pointer;
 }
 
-
-
-
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: #f4f6f8;
       color: #222;
+      scroll-behavior: smooth;
     }
 header img {height: 180px; 
     display: block; 
@@ -55,7 +54,89 @@ header img {height: 180px;
       color: white;
       padding: 25px;
       text-align: center;
+      position: relative;
 
+    }
+
+    #menu-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #0a7cff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 250px;
+      height: 100%;
+      background: #0a7cff;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 1001;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    nav.open {
+      transform: translateX(0);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 50px 0 0 0;
+      padding: 0;
+    }
+
+    nav li {
+      margin: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 15px 20px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+    }
+
+    #overlay.show {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        width: 200px;
+      }
+      .anuncios {
+        grid-template-columns: 1fr;
+      }
+      .filtros input, .filtros select {
+        width: 100%;
+        margin: 5px 0;
+      }
     }
 
     section {
@@ -129,44 +210,86 @@ header img {height: 180px;
 <body>
 
 <header>
+    <button id="menu-toggle">☰ Menu</button>
     <img src="logo.png"
      alt="AlugaAqui" style="height:180px; display:block; margin:auto;">
   <p>Seu lar, direto do proprietario: seguro, transparente e confiável</p>
 </header>
 
-<section>
+<nav id="nav-menu">
+  <ul>
+    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+    <li><a href="#casas"><i class="fas fa-home"></i> Casas Disponíveis</a></li>
+    <li><a href="#contacte"><i class="fas fa-envelope"></i> Contacte-nos</a></li>
+  </ul>
+</nav>
+
+<div id="overlay"></div>
+
+<section id="sobre-nos">
    <h2>Sobre Nós</h2>
-  <div style=”text-align:center; margin-bottom:20px;”>
+  <div style="text-align:center; margin-bottom:20px;">
    
   </div>
-  <div id=”sobre-texto”>
+  <div id="sobre-texto">
     <p>O <b>AlugaAqui</b> nasceu da necessidade de tornar o arrendamento em Moçambique mais transparente e confiável. Muitos inquilinos perdem tempo e dinheiro com anúncios falsos ou boatos, e proprietários tinham dificuldade em divulgar suas casas de forma segura. Criamos esta plataforma para conectar proprietários e inquilinos diretamente, garantindo informações verificadas, fotos reais e comunicação segura, sem intermediários que possam gerar confusão ou golpes.</p> <p>“Chega de perder tempo e dinheiro com anúncios falsos. Encontre sua casa com segurança e confiança.”</p>
-
-  <h2>Nossa Missão</h2>
-  <p>Fornecer informações claras, precisas e confiáveis sobre arrendamento, tornando o processo de alugar ou anunciar simples, seguro e transparente para todos.</p>
-
-  <h2>Nossa Visão</h2>
-  <p>Ser a referência número um em confiança e transparência no mercado de arrendamento habitacional em Moçambique, onde proprietários e inquilinos se conectam de forma justa e direta.</p>
-
-  <h2>Nosso Objectivo</h2>
-  <p>Facilitar o acesso à habitação, eliminar boatos e golpes, e criar um mercado de arrendamento mais justo, prático e acessível para todos.</p>
+  </div>
 </section>
 
-<section>
-  <h2>Casas Disponíveis</h2>
+<section id="casas">
+  <h2>Casas Temporariamente isponíveis</h2>
+  <section style="background:#fff3cd; border:1px solid #ffeeba; padding:20px; border-radius:8px; margin:20px auto; max-width:1100px;">
+  <h3 style="color:#856404;">⚠️ Aviso Importante</h3>
+  <p>
+    O AlugaAqui encontra-se actualmente numa <strong>fase experimental</strong>.
+    As casas apresentadas nesta versão são <strong>fictícias</strong> e servem apenas
+    para demonstrar o funcionamento da plataforma.
+  </p>
+  <p>
+    <strong>És proprietário e queres anunciar a tua casa?</strong><br>
+    Envia as fotos e os dados pelo WhatsApp e ajuda-nos a construir uma plataforma
+    de arrendamento mais transparente em Moçambique.
+    O mesmo serve para <b>SUGESTOES PARA MELHORAR O NOSSO APLICATIVO</b>
+  </p>
+  <a href="https://wa.me/258840000000?text=Olá,+sou+proprietário+e+quero+anunciar+uma+casa+no+AlugaAqui"
+     class="btn">
+     Enviar pelo WhatsApp
+  </a>
+</section>
+
+  <div class="filtros" style="margin-bottom: 20px; text-align: center;">
+    <input type="text" id="filtro-local" placeholder="Localização (ex: Maputo)" style="padding: 10px; margin: 5px;">
+    <select id="filtro-tipo" style="padding: 10px; margin: 5px;">
+      <option value="">Todos os tipos</option>
+      <option value="Quarto">Quarto</option>
+      <option value="Casa T2">Casa T2</option>
+      <option value="Apartamento">Apartamento</option>
+    </select>
+    <input type="number" id="filtro-preco-min" placeholder="Preço mínimo" style="padding: 10px; margin: 5px;">
+    <input type="number" id="filtro-preco-max" placeholder="Preço máximo" style="padding: 10px; margin: 5px;">
+    <button id="btn-filtrar" class="btn">Filtrar</button>
+  </div>
+
   <div class="anuncios" id="listaAnuncios"></div>
 </section>
 
-<section>
+<section id="contacte">
 
     <h2>Contacte-nos</h2>
   <p>É proprietário e quer anunciar a sua casa?<br>Envie as fotos e dados pelo WhatsApp.</p>
-  <a class=”btn” href=https://wa.me/258857320579?text=Olá,+quero+anunciar+uma+casa+no+AlugaAqui target=”_blank”>Enviar mensagem pelo WhatsApp</a>
+  <a class="btn" href="https://wa.me/258857320579?text=Olá,+quero+anunciar+uma+casa+no+AlugaAqui" target="_blank">Enviar mensagem pelo WhatsApp</a>
 
   </form>
 </section>
 
 <footer>
+  <div style="text-align: center; margin-bottom: 20px;">
+    <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px;"><i class="fab fa-facebook-f" style="font-size: 24px; color: #0a7cff;"></i></a>
+    <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px;"><i class="fab fa-instagram" style="font-size: 24px; color: #0a7cff;"></i></a>
+    <a href="https://wa.me/258857320579" target="_blank" style="margin: 0 10px;"><i class="fab fa-whatsapp" style="font-size: 24px; color: #0a7cff;"></i></a>
+    <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px;"><i class="fab fa-linkedin-in" style="font-size: 24px; color: #0a7cff;"></i></a>
+    <a href="https://www.twitter.com" target="_blank" style="margin: 0 10px;"><i class="fab fa-twitter" style="font-size: 24px; color: #0a7cff;"></i></a>
+  </div>
   <p>Criado por: Sergio Ferdinanda</p>
   <p>Contacto: +258 85 732 0579</p>
   <p>&copy; 2026 AlugaAqui</p>
@@ -181,6 +304,8 @@ let anuncios = [
     local: "Maputo",
     preco: 3000,
     contacto: "840000000",
+    quartos: 1,
+    area: 25,
     imagens: [
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688"
@@ -189,20 +314,24 @@ let anuncios = [
   { 
     proprietario: "Dona Ferdinanda",
     tipo: "Casa T2",
-    local: "inhambane",
+    local: "Inhambane",
     preco: 8500,
     contacto: "870000000",
+    quartos: 2,
+    area: 80,
     imagens: [
       "https://images.unsplash.com/photo-1572120360610-d971b9b78825",
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
     ]
   },
   { 
-    proprietario: "Sr. Carmon da nanda",
+    proprietario: "Sr. Carmon da Nanda",
     tipo: "Apartamento",
-    local: "",
+    local: "Maputo",
     preco: 15000,
     contacto: "860000000",
+    quartos: 3,
+    area: 120,
     imagens: [
       "https://images.unsplash.com/photo-1598928506311-c55ded91a20c"
     ]
@@ -216,7 +345,7 @@ function renderAnuncios() {
   anuncios.forEach(a => {
     // Cada imagem recebe onclick para abrir modal
     let fotos = a.imagens.map(img => 
-      `<img src='${img}' alt='Casa para alugar' onclick='abrirModal(this.src)'>`
+      `<img src='${img}' alt='Casa para alugar em ${a.local}' onclick='abrirModal(this.src)'>`
     ).join('');
     
     div.innerHTML += `
@@ -225,6 +354,7 @@ function renderAnuncios() {
         <span class='badge'>${a.tipo}</span>
         <p><strong>Proprietário:</strong> ${a.proprietario}</p>
         <p><strong>Localização:</strong> ${a.local}</p>
+        <p><strong>Quartos:</strong> ${a.quartos} | <strong>Área:</strong> ${a.area}m²</p>
         <p><strong>Preço:</strong> ${a.preco} MZN</p>
         <p><strong>Contacto:</strong> ${a.contacto}</p>
         <a class='btn' href='https://wa.me/258${a.contacto}' target='_blank'>Falar com o proprietário</a>
@@ -242,13 +372,77 @@ function fecharModal() {
   document.getElementById('modalImagem').style.display = 'none';
 }
 
+// Função para toggle do menu
+document.getElementById('menu-toggle').addEventListener('click', function() {
+  const nav = document.getElementById('nav-menu');
+  const overlay = document.getElementById('overlay');
+  nav.classList.toggle('open');
+  overlay.classList.toggle('show');
+});
+
+// Fechar o menu ao clicar no overlay
+document.getElementById('overlay').addEventListener('click', function() {
+  const nav = document.getElementById('nav-menu');
+  const overlay = document.getElementById('overlay');
+  nav.classList.remove('open');
+  overlay.classList.remove('show');
+});
+
+// Fechar o menu ao clicar em um link
+document.querySelectorAll('#nav-menu a').forEach(link => {
+  link.addEventListener('click', function() {
+    document.getElementById('nav-menu').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  });
+});
+
 // Chama a função para renderizar os anúncios na página
 renderAnuncios();
+
+// Função para filtrar anúncios
+document.getElementById('btn-filtrar').addEventListener('click', function() {
+  const localFiltro = document.getElementById('filtro-local').value.toLowerCase();
+  const tipoFiltro = document.getElementById('filtro-tipo').value;
+  const precoMin = parseInt(document.getElementById('filtro-preco-min').value) || 0;
+  const precoMax = parseInt(document.getElementById('filtro-preco-max').value) || Infinity;
+
+  const filtrados = anuncios.filter(a => {
+    return (localFiltro === '' || a.local.toLowerCase().includes(localFiltro)) &&
+           (tipoFiltro === '' || a.tipo === tipoFiltro) &&
+           (a.preco >= precoMin && a.preco <= precoMax);
+  });
+
+  renderAnunciosFiltrados(filtrados);
+});
+
+function renderAnunciosFiltrados(filtrados) {
+  const div = document.getElementById("listaAnuncios");
+  div.innerHTML = "";
+  filtrados.forEach(a => {
+    let fotos = a.imagens.map(img => 
+      `<img src='${img}' alt='Casa para alugar em ${a.local}' onclick='abrirModal(this.src)'>`
+    ).join('');
+    
+    div.innerHTML += `
+      <div class='anuncio'>
+        ${fotos}
+        <span class='badge'>${a.tipo}</span>
+        <p><strong>Proprietário:</strong> ${a.proprietario}</p>
+        <p><strong>Localização:</strong> ${a.local}</p>
+        <p><strong>Quartos:</strong> ${a.quartos} | <strong>Área:</strong> ${a.area}m²</p>
+        <p><strong>Preço:</strong> ${a.preco} MZN</p>
+        <p><strong>Contacto:</strong> ${a.contacto}</p>
+        <a class='btn' href='https://wa.me/258${a.contacto}' target='_blank'>Falar com o proprietário</a>
+      </div>`;
+  });
+}
 </script>
 
 <div id="modalImagem">
     <span onclick="fecharModal()">&times;</span>
     <img id="imgModal" scr="">
 </div>
+
 </body>
 </html>
+
